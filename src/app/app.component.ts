@@ -1,10 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [UserService]
 })
-export class AppComponent {
-  title = 'GeeksHubs-ProyectoFinal-RedSocial-Frontend';
+export class AppComponent implements OnInit, DoCheck{
+  title = 'frontPrueba';
+  public identity;
+  public token;
+
+
+  constructor( public _userService: UserService ){
+
+    this.loadUser();
+  }
+
+  ngOnInit(){
+    console.log('Webapp cargada correctamente');
+  }
+
+  // Actualiza la barra de navegación cuando hayan cambios
+  ngDoCheck(){
+    this.loadUser();
+  }
+
+  loadUser(){
+    // Almacena en identity al usuario identidicado mediante el método getIdentity();
+    this.identity = this._userService.getIdentity();
+    // Almacena el token mediante el método getToken();
+    this.token = this._userService.getToken();
+  }
 }

@@ -14,7 +14,7 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav navbar-right">
+      <ul class="navbar-nav navbar-right" *ngIf="!identity">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/login']"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign in</button></a>
         </li>
@@ -23,10 +23,12 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav navbar-right">
+      <!-- comprueba si identity y identity.name existen y tienen datos,
+           si es asi muestra el desplegable -->
+      <ul class="navbar-nav navbar-right" *ngIf="identity && identity.name">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Jose Carreres
+            {{ identity.name + ' ' + identity.surname }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">crear entrada</a>
