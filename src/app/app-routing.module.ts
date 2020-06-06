@@ -7,16 +7,18 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { PostNewComponent } from './components/post-new/post-new.component';
 
 
 const routes: Routes = [
-  {path: '',             component: HomeComponent},
-  {path: 'inicio',       component: LoginComponent},
-  {path: 'login',        component: LoginComponent},
-  {path: 'logout/:sure', component: LoginComponent},
-  {path: 'registro',     component: RegisterComponent},
-  {path: 'ajustes',      component: UserEditComponent},
-  {path: '**',           component: ErrorComponent},
+  {path: '',              component: HomeComponent},
+  {path: 'inicio',        component: LoginComponent},
+  {path: 'login',         component: LoginComponent},
+  {path: 'logout/:sure',  component: LoginComponent},
+  {path: 'registro',      component: RegisterComponent},
+  {path: 'ajustes',       component: UserEditComponent},
+  {path: 'crear-entrada', component: PostNewComponent},
+  {path: '**',            component: ErrorComponent},
 
 ];
 
