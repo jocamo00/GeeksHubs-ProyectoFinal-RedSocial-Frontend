@@ -28,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+              "node_modules/froala-editor/css/froala_style.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +130,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "GeeksHubs-ProyectoFinal-RedSocial-Frontend"
+    }
+  },
+  "defaultProject": "GeeksHubs-ProyectoFinal-RedSocial-Frontend",
+  "cli": {
+    "analytics": "47d449ec-ff15-405a-905e-66b42bf737f1"
+  }
 }
