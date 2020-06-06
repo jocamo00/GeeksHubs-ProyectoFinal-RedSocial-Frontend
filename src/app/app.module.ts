@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     FormsModule,
     HttpClientModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    AngularFileUploaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

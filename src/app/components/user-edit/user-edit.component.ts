@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { global } from '../../services/global';
 
 @Component({
   selector: 'app-user-edit',
@@ -15,6 +16,9 @@ export class UserEditComponent implements OnInit {
   public identity;
   public token;
   public status;
+  public url;
+  public resetVar=true;
+
   public froala_options: Object = {
     charCounterCount: true,
     toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
@@ -22,6 +26,25 @@ export class UserEditComponent implements OnInit {
     toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
     toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
   };
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg, .png, .gif, .jpeg",
+    maxSize: "50",
+    uploadAPI:  {
+      url:global.url+'user/upload',
+      method:"POST",
+      headers: {
+     "Authorization" : this._userService.getToken()
+      },
+      responseType: 'blob',
+    },
+    theme: "attachPin",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    attachPinText: 'Sube tu avatar'
+
+};
 
 
   constructor(
@@ -32,6 +55,7 @@ export class UserEditComponent implements OnInit {
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.url = global.url;
 
     // Rellena el objeto usuario
     this.user = new User(
@@ -40,7 +64,7 @@ export class UserEditComponent implements OnInit {
       this.identity.surname,
       this.identity.role,
       this.identity.email,
-      '',
+      this.identity.password,
       this.identity.description,
       this.identity.image
     );
@@ -88,5 +112,12 @@ export class UserEditComponent implements OnInit {
         console.log(<any>error)
       }
     );
+  }
+
+  avatarUpload(datos){
+    // Coge la respuesta en este caso la imagen, la pasa a objeto y la guarda en data
+    let data = JSON.parse(datos.response);
+    // Se le pasa la imagen al user
+    this.user.image = data.image;
   }
 }
