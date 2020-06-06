@@ -83,4 +83,20 @@ export class UserService {
 
     return this.token;
   }
+
+  // Método para actualizar el usuario
+  // Se le pasa el token y el usuario
+  update(token, user): Observable<any>{
+    // Coge los datos del objeto user y los convierte en JSON string, para poder enviarlos a la API
+    let json = JSON.stringify(user);
+
+    // Define los parámetros que se van a enviar
+    let params = "json="+json;
+
+    // Define las cabeceras
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                   .set('Authorization', token);
+
+    return this._http.put(this.url + 'user/update', params, {headers: headers});
+  }
 }
