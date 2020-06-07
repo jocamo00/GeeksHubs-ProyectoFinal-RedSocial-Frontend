@@ -14,6 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { PostNewComponent } from './components/post-new/post-new.component';
     RegisterComponent,
     ErrorComponent,
     UserEditComponent,
-    PostNewComponent
+    PostNewComponent,
+    PostDetailComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,

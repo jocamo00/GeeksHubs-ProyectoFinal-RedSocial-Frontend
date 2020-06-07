@@ -8,6 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path: 'registro',      component: RegisterComponent},
   {path: 'ajustes',       component: UserEditComponent},
   {path: 'crear-entrada', component: PostNewComponent},
+  {path: 'editar-entrada', component: PostEditComponent},
+  //{path: 'entrada/:id',   component: PostDetailComponent},
   {path: '**',            component: ErrorComponent},
 
 ];

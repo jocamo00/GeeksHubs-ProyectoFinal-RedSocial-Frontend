@@ -11,7 +11,9 @@
   <div class="card-columns">
     <article class="card w-100" *ngFor="let post of posts">
       <div class="card-header">
-        <h3>{{post.title}}</h3>
+        <!-- Con la directiva innerHtml se puede mostrar HTML -->
+        <h3><a [routerLink]="['/entrada', post.id]" [innerHtml]="post.content"></a></h3>
+        <p>{{post.user.name}}</p>
       </div>
 
       <div class="card-body">
@@ -27,16 +29,11 @@
         </div>
 
         <!-- botones de acción -->
-        <div class="post-buttons mt-3">
-          <a [routerLink]="['/inicio']" class="btn btn-success mr-2">Leer</a>
-
-          <!-- Comprueba si el usuario esta identificado y si el id del usuario identificado
+        <!-- Comprueba si el usuario esta identificado y si el id del usuario identificado
                es igual al user_id del post-->
-          <span *ngIf="identity && identity.sub == post.user_id">
-            <a [routerLink]="['/inicio']" class="btn btn-warning mr-2">Editar</a>
-            <a [routerLink]="['/inicio']" class="btn btn-danger">Borrar</a>
-          </span>
-
+        <div class="post-buttons mt-3" *ngIf="identity && identity.sub == post.user_id">
+          <a [routerLink]="['/editar-entrada', post.id]" class="btn btn-warning mr-2">Editar</a>
+          <a [routerLink]="['/inicio']" class="btn btn-danger">Borrar</a>
         </div>
 
       </div>
