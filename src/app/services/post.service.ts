@@ -26,7 +26,7 @@ export class PostService {
     let json = JSON.stringify(post);
 
     // Defini los parametros que se van a enviar
-    let params = "json="+json;
+    let params = "console.log('puta');json="+json;
 
     // Cabeceras
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
@@ -67,5 +67,13 @@ export class PostService {
 
     // Petición a la API
     return this._http.put(this.url + 'post/' + id, params, {headers: headers});
+  }
+
+  // Método para eliminar un post por su id
+  delete(token, id){
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                   .set('Authorization', token);
+    // Petición a la API
+    return this._http.delete(this.url + 'post/' + id, {headers: headers});
   }
 }

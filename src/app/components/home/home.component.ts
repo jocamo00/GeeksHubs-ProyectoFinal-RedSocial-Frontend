@@ -47,4 +47,16 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  deletePost(id){
+    this._postService.delete(this.token, id).subscribe(
+      response => {
+        // Cuando borra un post vuelve a cargar el listado de posts
+        this.getPosts();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }
