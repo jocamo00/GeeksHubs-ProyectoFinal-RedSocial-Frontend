@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,9 @@ export class RegisterComponent implements OnInit {
   public user: User;
   public status: string;
 
-  constructor( private _userService: UserService ) {
+  constructor( private _userService: UserService,
+               private _router: Router
+    ) {
     this.page_title = 'Registrate';
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
 
@@ -45,6 +48,9 @@ export class RegisterComponent implements OnInit {
         if(response.status == "success"){
           this.status = response.status;
           form.reset();
+
+          // Redirección a inicio
+          this._router.navigate(['inicio']);
 
         }else{
           this.status = 'error';

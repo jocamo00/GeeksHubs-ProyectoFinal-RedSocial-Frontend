@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('identity', JSON.stringify(this.identity));
 
                 // Redirección a inicio
-                this._router.navigate(['']);
+                this._router.navigate(['inicio']);
             },
             error => {
               this.status = 'error';

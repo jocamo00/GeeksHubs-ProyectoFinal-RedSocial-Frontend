@@ -11,8 +11,7 @@ import { PostNewComponent } from './components/post-new/post-new.component';
 
 
 const routes: Routes = [
-  {path: '',              component: HomeComponent},
-  {path: 'inicio',        component: LoginComponent},
+  {path: 'inicio',        component: HomeComponent},
   {path: 'login',         component: LoginComponent},
   {path: 'logout/:sure',  component: LoginComponent},
   {path: 'registro',      component: RegisterComponent},

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { global } from '../../services/global';
 
 @Component({
@@ -47,8 +48,8 @@ export class UserEditComponent implements OnInit {
 };
 
 
-  constructor(
-    private _userService: UserService
+  constructor( private _userService: UserService,
+               private _router: Router
 
   ) {
     this.page_title = 'Ajustes de usuario';
@@ -102,6 +103,9 @@ export class UserEditComponent implements OnInit {
 
           // Actualiza el usuario en la localStorage
           localStorage.setItem('identity', JSON.stringify(this.identity));
+
+          // Redirección a inicio
+          this._router.navigate(['inicio']);
 
         }else{
           this.status = 'error';

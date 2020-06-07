@@ -75,7 +75,7 @@ export class PostNewComponent implements OnInit {
         if(response.status == 'success'){
           this.post = response.post;
           this.status = 'success';
-          this._router.navigate(['']);
+          this._router.navigate(['inicio']);
         }else{
           this.status = 'error';
         }
