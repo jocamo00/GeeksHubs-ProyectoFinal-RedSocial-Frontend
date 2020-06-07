@@ -1,1 +1,36 @@
-<p>home works!</p>
+<!-- Mientras se cargan los posts -->
+<div class="loading" *ngIf="!posts">
+  Cargando...
+</div>
+
+<!-- Muestra el contenido cuando la propiedad posts exista, tenga contenido -->
+<div class="container-fluid" *ngIf="posts">
+  <h1>{{page_title}}</h1>
+  <hr/>
+
+  <div class="card-columns">
+    <article class="card w-100" *ngFor="let post of posts">
+      <div class="card-header">
+        <h3>{{post.title}}</h3>
+      </div>
+
+      <div class="card-body">
+        <!-- Imagen, se pasa url -->
+        <!-- En caso de que la imagen exista -->
+        <div class="post-image w-100" *ngIf="post.image">
+          <img src="{{ url + 'post/image/' + post.image }}" class="w-100"/>
+        </div>
+
+        <!-- En caso de que la imagen no exista -->
+        <div class="post-image w-100" *ngIf="!post.image">
+          <img src="assets/img/image-default.jpg" class="w-100"/>
+        </div>
+
+
+        <!-- botones de acción -->
+      </div>
+    </article>
+  </div>
+
+</div>
+

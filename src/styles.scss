@@ -84,3 +84,10 @@ header .overlay {
 .avatar_mask img {
   height: 40px;
 }
+/********/
+
+/*** home.component iamgen ***/
+.post-image {
+  height: 200px;
+  overflow: hidden; // Para que todo lo que salga de ahi lo oculte, para que todas las cjas tengan el mismo tamaño
+}
