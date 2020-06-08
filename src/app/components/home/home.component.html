@@ -4,72 +4,84 @@
 </div>
 
 <!-- Muestra el contenido cuando la propiedad posts exista, tenga contenido -->
-<div class="container-fluid mt-3" *ngIf="posts">
-  <h1>{{page_title}}</h1>
-  <hr/>
+<div class="container-fluid mt-4" *ngIf="posts">
 
-  <div class="card-columns">
-    <article class="card w-100" *ngFor="let post of posts">
-      <div class="card-header">
-        <!-- Con la directiva innerHtml se puede mostrar HTML -->
-        <h3><a [routerLink]="['/entrada', post.id]" [innerHtml]="post.content"></a></h3>
-        <p>{{post.user.name}}</p>
-      </div>
+  <div class="row">
+      <div class="col-12 col-md-8 container-posts">
+          <h2>Activity</h2>
 
-      <div class="card-body">
-        <!-- Imagen, se pasa url -->
-        <!-- En caso de que la imagen exista -->
-        <div class="post-image w-100" *ngIf="post.image">
-          <img src="{{ url + 'post/image/' + post.image }}" class="w-100"/>
-        </div>
+          <div class="card mb-3 background-post" *ngFor="let post of posts">
+              <!-- botones de acción -->
+              <!-- Comprueba si el usuario esta identificado y si el id del usuario identificado
+                   es igual al user_id del post-->
+              <div class="row no-gutters ml-auto" *ngIf="identity && identity.sub == post.user_id">
+                  <a [routerLink]="['/editar-entrada', post.id]"><img src="../../../assets/img/editar.png" class="card-img mr-3 user-img post-icons" alt="icono editar"></a>
 
-        <!-- En caso de que la imagen no exista -->
-        <div class="post-image w-100" *ngIf="!post.image">
-          <img src="assets/img/image-default.jpg" class="w-100"/>
-        </div>
+                  <!-- Button to Open the Modal -->
+                  <button type="button" data-toggle="modal" [attr.data-target]="'#myModal'+post.id" style="border-style: none"><img src="../../../assets/img/eliminar.png" class="card-img mr-3 user-img post-icons" alt="icono eliminar"></button>
+                  <!-- The Modal -->
+                  <div class="modal" id="{{ 'myModal'+post.id }}">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
 
-        <!-- botones de acción -->
-        <!-- Comprueba si el usuario esta identificado y si el id del usuario identificado
-               es igual al user_id del post-->
-        <div class="post-buttons mt-3" *ngIf="identity && identity.sub == post.user_id">
-          <a [routerLink]="['/editar-entrada', post.id]" class="btn btn-warning mr-2">Editar</a>
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">¿Seguro que quieres borrar esta publicación?</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          La publicación se va a borrar definitivamente
+                        </div>
 
-          <!-- Button to Open the Modal -->
-          <button type="button" class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#myModal'+post.id">
-            Borrar
-          </button>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <a (click)="deletePost(post.id)" class="btn btn-danger" data-dismiss="modal">Borrar</a>
+                          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        </div>
 
-          <!-- The Modal -->
-          <div class="modal" id="{{ 'myModal'+post.id }}">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">¿Seguro que quieres borrar esta publicación?</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              <!-- Imagen, se pasa url -->
+              <!-- En caso de que la imagen exista -->
+              <div *ngIf="post.image">
+                <img src="{{ url + 'post/image/' + post.image }}" class="card-img-top" alt="...">
+              </div>
 
-                <!-- Modal body -->
-                <div class="modal-body">
-                  La publicación se va a borrar definitivamente
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <a (click)="deletePost(post.id)" class="btn btn-danger" data-dismiss="modal">Borrar</a>
-                  <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                </div>
-
+              <!-- En caso de que la imagen no exista -->
+              <div *ngIf="!post.image">
+                <img src="assets/img/image-default.jpg" class="card-img-top" alt="imagen por defecto">
+              </div>
+              <div class="card-body">
+                  <div class="row no-gutters">
+                      <img src="{{ url + 'user/avatar/' + post.user.image}}" class="card-img mr-3 user-img" alt="..." style="width: 3rem">
+                      <h5 class="card-title pt-2 user-name">{{ post.user.name + ' ' + post.user.surname }}</h5>
+                  </div>
+                <!-- Con la directiva innerHtml se puede mostrar HTML -->
+                <p class="card-text mt-3" [innerHtml]="post.content"></p>
+                <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
               </div>
             </div>
-          </div>
+      </div>
+      <div class="col-12 col-md-4">
+          <h2>Members</h2>
+
+          <div class="card mb-3 background-post" *ngFor="let user of users">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <img src="{{ url + 'user/avatar/' + user.image}}" class="card-img mr-3 user-img" alt="..." style="width: 3rem">
+                    <h5 class="card-title pt-2 user-name">{{ user.name + ' ' + user.surname }}</h5>
+                </div>
+            </div>
         </div>
 
       </div>
-    </article>
+
   </div>
 
 </div>
+
 

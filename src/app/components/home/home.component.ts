@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../models/post';
+import { User } from '../../models/user';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { global } from '../../services/global';
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   public page_title: string;
   public url;
   public posts: Array<Post>;
+  public users: Array<User>;
   public identity;
   public token;
 
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
+    this.getUsers();
   }
 
   // Método para obtener los posts de la API
@@ -57,6 +60,22 @@ export class HomeComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  // Método para obtener los usuarios de la API
+  getUsers(){
+    this._userService.getUsers().subscribe(
+      response => {
+        if(response.status == 'success'){
+          // Guarda la respuesta que viene de la API con un array de users
+          this.users = response.users;
+          console.log(this.users);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
 }

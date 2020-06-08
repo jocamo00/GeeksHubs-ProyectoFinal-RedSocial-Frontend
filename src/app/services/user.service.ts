@@ -115,4 +115,12 @@ export class UserService {
 
     return this._http.get(this.url + 'user/detail/' + id, {headers: headers});
   }
+
+  // listar todos los usuarios
+  getUsers(): Observable<any>{
+    // Indica tipo de content type
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + 'user', {headers: headers});
+  }
 }
