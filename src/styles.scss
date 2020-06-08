@@ -91,3 +91,16 @@ header .overlay {
   height: 200px;
   overflow: hidden; // Para que todo lo que salga de ahi lo oculte, para que todas las cjas tengan el mismo tamaño
 }
+/******/
+
+/**** profile.component.html***/
+.avatar_mask_profile {
+  width: 90px;
+  height: 90px;
+  border-radius: 900px;
+  overflow: hidden;
+}
+
+.avatar_mask_profile img {
+  height: 90px;
+}

@@ -19,6 +19,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 import { IdentityGuard } from './services/identity.guard';
 import { UserService } from './services/user.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UserService } from './services/user.service';
     UserEditComponent,
     PostNewComponent,
     PostDetailComponent,
-    PostEditComponent
+    PostEditComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

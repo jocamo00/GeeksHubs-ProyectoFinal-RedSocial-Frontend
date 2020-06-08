@@ -99,4 +99,20 @@ export class UserService {
 
     return this._http.put(this.url + 'user/update', params, {headers: headers});
   }
+
+  // listar todos los posts de un usuario
+  getPosts(id): Observable<any>{
+    // Indica tipo de content type
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + 'post/user/' + id, {headers: headers});
+  }
+
+  // Mostrar un usuario concreto
+  getUser(id): Observable<any>{
+    // Indica tipo de content type
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + 'user/detail/' + id, {headers: headers});
+  }
 }

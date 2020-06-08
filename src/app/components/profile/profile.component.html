@@ -5,15 +5,28 @@
 
 <!-- Muestra el contenido cuando la propiedad posts exista, tenga contenido -->
 <div class="container-fluid mt-3" *ngIf="posts">
-  <h1>{{page_title}}</h1>
-  <hr/>
+
+  <hr>
+  <div>
+    <div class="avatar_mask_profile float-left mr-3">
+      <img src="{{ url + 'user/avatar/' + identity.image}}" class="avatar_nav" />
+    </div>
+    <div class="data_mask float-left">
+      <h1>Perfil de {{ user.name + ' ' + user.surname }}</h1>
+      <p [innerHTML]="user.description"></p>
+    </div>
+    <div class="clearfix"></div>
+
+  </div>
+  <hr>
+
 
   <div class="card-columns">
     <article class="card w-100" *ngFor="let post of posts">
       <div class="card-header">
         <!-- Con la directiva innerHtml se puede mostrar HTML -->
         <h3><a [routerLink]="['/entrada', post.id]" [innerHtml]="post.content"></a></h3>
-        <p>{{post.user.name}}</p>
+
       </div>
 
       <div class="card-body">

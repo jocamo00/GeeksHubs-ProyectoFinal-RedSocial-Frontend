@@ -10,6 +10,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 import { IdentityGuard } from './services/identity.guard';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'ajustes',        component: UserEditComponent, canActivate: [IdentityGuard]},
   {path: 'crear-entrada',  component: PostNewComponent, canActivate: [IdentityGuard]},
   {path: 'editar-entrada', component: PostEditComponent, canActivate: [IdentityGuard]},
+  {path: 'perfil/:id',     component: ProfileComponent},
   //{path: 'entrada/:id',  component: PostDetailComponent},
   {path: 'error',          component: ErrorComponent},
   {path: '**',             component: ErrorComponent},
