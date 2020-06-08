@@ -11,20 +11,17 @@ import { PostNewComponent } from './components/post-new/post-new.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 
-import { IdentityGuard } from './services/identity.guard';
-
 
 const routes: Routes = [
-  {path: 'inicio',         component: HomeComponent},
-  {path: 'login',          component: LoginComponent},
-  {path: 'logout/:sure',   component: LoginComponent},
-  {path: 'registro',       component: RegisterComponent},
-  {path: 'ajustes',        component: UserEditComponent, canActivate: [IdentityGuard]},
-  {path: 'crear-entrada',  component: PostNewComponent, canActivate: [IdentityGuard]},
-  {path: 'editar-entrada', component: PostEditComponent, canActivate: [IdentityGuard]},
-  //{path: 'entrada/:id',  component: PostDetailComponent},
-  {path: 'error',          component: ErrorComponent},
-  {path: '**',             component: ErrorComponent},
+  {path: 'inicio',        component: HomeComponent},
+  {path: 'login',         component: LoginComponent},
+  {path: 'logout/:sure',  component: LoginComponent},
+  {path: 'registro',      component: RegisterComponent},
+  {path: 'ajustes',       component: UserEditComponent},
+  {path: 'crear-entrada', component: PostNewComponent},
+  {path: 'editar-entrada', component: PostEditComponent},
+  //{path: 'entrada/:id',   component: PostDetailComponent},
+  {path: '**',            component: ErrorComponent},
 
 ];
 

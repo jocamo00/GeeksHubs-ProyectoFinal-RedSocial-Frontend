@@ -17,10 +17,6 @@ import { PostNewComponent } from './components/post-new/post-new.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 
-import { UserService } from './services/user.service';
-import { IdentityGuard } from './services/identity.guard';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,11 +38,7 @@ import { IdentityGuard } from './services/identity.guard';
     FroalaViewModule.forRoot(),
     AngularFileUploaderModule
   ],
-  providers: [
-    IdentityGuard,
-    UserService
-  ],
-
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
