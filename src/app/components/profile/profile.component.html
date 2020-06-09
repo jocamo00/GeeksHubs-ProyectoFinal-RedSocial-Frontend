@@ -4,7 +4,7 @@
 </div>
 
   <!-- Muestra el contenido cuando la propiedad posts exista, tenga contenido -->
-  <div class="container-fluid" *ngIf="posts">
+  <div class="container-fluid margin-top-header" *ngIf="posts">
 
     <div class="row">
       <div class="col-12 p-0">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="row">
-      <div class="col-8 container-posts">
+      <div class="col-12 col-md-8 container-posts">
 
           <h2 class="mt-5 pb-2">Mis publicaciones</h2>
           <div class="card mb-3 background-post" *ngFor="let post of posts">
@@ -64,8 +64,8 @@
             </div>
 
       </div>
-      <div class="col-4">
 
+      <div class="col-12 col-md-4">
 
           <div class="card bg-light text-dark margin-top-column-profile">
               <img src="../../../assets/img/fondoViaje.png" class="card-img" alt="...">
@@ -74,14 +74,12 @@
                 <p class="card-text" [innerHtml]="user.description">/p>
                 <div class="row no-gutters mt-5">
                   <img src="../../../assets/img/email.png" class="card-img mr-3 user-img" alt="..." style="width: 3rem">
-                  <h5 class="card-title pt-2 text-dark">{{ user.email }}</h5>
+                  <a class="email"><h5 class="card-title pt-2 text-dark">{{ user.email }}</h5></a>
               </div>
               </div>
             </div>
 
-
           <h2 class="mt-5">Members</h2>
-
           <div class="card mb-3 background-post" *ngFor="let user of users">
             <div class="card-body">
                 <div class="row no-gutters">
