@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
   public url;
   public posts: Array<Post>;
+  public users: Array<User>;
   public user: User;
   public identity;
   public token;
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfile();
+    this.getUsers();
   }
 
   getProfile(){
@@ -87,6 +89,22 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  // Método para obtener los usuarios de la API
+  getUsers(){
+    this._userService.getUsers().subscribe(
+      response => {
+        if(response.status == 'success'){
+          // Guarda la respuesta que viene de la API con un array de users
+          this.users = response.users;
+          console.log(this.users);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
 }
