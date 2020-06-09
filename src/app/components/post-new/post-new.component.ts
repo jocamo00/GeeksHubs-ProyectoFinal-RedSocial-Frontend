@@ -17,6 +17,7 @@ export class PostNewComponent implements OnInit {
   public token;
   public post: Post;
   public status;
+  public url: string;
   public resetVar=true;
 
   public froala_options: Object = {
@@ -55,6 +56,7 @@ export class PostNewComponent implements OnInit {
     this.page_title = 'Crear una entrada';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.url = global.url;
   }
 
   ngOnInit(): void {

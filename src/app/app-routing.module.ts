@@ -16,18 +16,18 @@ import { IdentityGuard } from './services/identity.guard';
 
 
 const routes: Routes = [
-  {path: '',               component: HomeComponent},
-  {path: 'inicio',         component: HomeComponent},
-  {path: 'login',          component: LoginComponent},
-  {path: 'logout/:sure',   component: LoginComponent},
-  {path: 'registro',       component: RegisterComponent},
-  {path: 'ajustes',        component: UserEditComponent, canActivate: [IdentityGuard]},
-  {path: 'crear-entrada',  component: PostNewComponent, canActivate: [IdentityGuard]},
-  {path: 'editar-entrada', component: PostEditComponent, canActivate: [IdentityGuard]},
-  {path: 'perfil/:id',     component: ProfileComponent},
-  //{path: 'entrada/:id',  component: PostDetailComponent},
-  {path: 'error',          component: ErrorComponent},
-  {path: '**',             component: ErrorComponent},
+  {path: '',                   component: HomeComponent},
+  {path: 'inicio',             component: HomeComponent},
+  {path: 'login',              component: LoginComponent},
+  {path: 'logout/:sure',       component: LoginComponent},
+  {path: 'registro',           component: RegisterComponent},
+  {path: 'ajustes',            component: UserEditComponent, canActivate: [IdentityGuard]},
+  {path: 'crear-entrada',      component: PostNewComponent, canActivate: [IdentityGuard]},
+  {path: 'editar-entrada/:id', component: PostEditComponent, canActivate: [IdentityGuard]},
+  {path: 'perfil/:id',         component: ProfileComponent},
+  //{path: 'entrada/:id',      component: PostDetailComponent},
+  {path: 'error',              component: ErrorComponent},
+  {path: '**',                 component: ErrorComponent},
 
 ];
 
