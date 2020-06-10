@@ -39,11 +39,11 @@
             {{ identity.name + ' ' + identity.surname }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/crear-entrada']">crear entrada</a>
+            <a class="dropdown-item" [routerLink]="['/crear-entrada']"><img src="../assets/img/add.png" class="img-add"> publicación</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]">Mi perfil</a>
-            <a class="dropdown-item" [routerLink]="['/ajustes']">Ajustes</a>
-            <a class="dropdown-item" [routerLink]="['/logout/1']">Salir</a>
+            <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]"><img src="../assets/img/profile.png" class="img-add"> Ver perfil</a>
+            <a class="dropdown-item" [routerLink]="['/ajustes']"><img src="../assets/img/editProfile.png" class="img-add"> Editar perfil</a>
+            <a class="dropdown-item" [routerLink]="['/logout/1']"><img src="../assets/img/close.png" class="img-add"> Salir</a>
           </div>
         </li>
       </ul>
