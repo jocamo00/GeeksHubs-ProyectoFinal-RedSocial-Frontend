@@ -1,8 +1,11 @@
 .container-publication{
   display: flex;
   justify-content: center;
-  font-size: calc(1.5em + 1.5vw);
   margin-top: 10rem;
+}
+
+.title-register{
+  font-size: calc(1.5em + 1.5vw);
 }
 
 .img-register{
