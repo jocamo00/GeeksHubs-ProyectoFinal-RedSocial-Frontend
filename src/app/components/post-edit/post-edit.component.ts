@@ -78,12 +78,12 @@ export class PostEditComponent implements OnInit {
             this.post = response.posts;
 
           }else{
-            this._router.navigate(['/inicio']);
+            this._router.navigate(['inicio']);
           }
         },
         error => {
           console.log(error);
-          this._router.navigate(['/inicio']);
+
         }
       )
     });
