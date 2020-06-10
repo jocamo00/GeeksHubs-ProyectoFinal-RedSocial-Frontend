@@ -1,10 +1,4 @@
 <div class="col-md-12" style="margin-top: 9rem;">
-  <h1>{{page_title}}</h1>
-
-  <p>
-    Añade un nuevo post
-  </p>
-  <hr/>
 
   <!-- Mensajes de alerta -->
   <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
@@ -15,37 +9,71 @@
     Los datos no se han guardado!!
   </div>
 
-  <!-- Formulario de crear entrada -->
-  <form class="col-md-5 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
-    <div class="form-group">
-      <label for="title">Titulo</label>
-      <input type="text" name="title" #title="ngModel" [(ngModel)]="post.title" class="form-control"/>
 
-      <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
-        El titulo no es válido
-      </small>
-    </div>
+  <div class="row container-publication mb-4">
+      <img src="../../../assets/img/registro.png" class="card-img img-register" alt="...">
+      <p class="title-register ml-2">Crea una nueva publicación</p>
+  </div>
 
-    <div class="form-group">
-      <label for="content">Contenido</label>
-      <textarea [froalaEditor]="froala_options" name="content" #content="ngModel" [(ngModel)]="post.content" required></textarea>
 
-      <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
-        El contenido no es válido
-      </small>
-    </div>
+  <div class="row">
+    <div class="col-2"></div>
 
-    <div class="form-group">
-      <label for="image">Imagen</label>
+    <div class="card mb-3 col-8">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="../../../assets/img/nuevaEntrada.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <!-- Formulario de crear entrada -->
+            <form class="col-md-12 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
+              <!--<div class="form-group">
+                <label for="title">Titulo</label>
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="post.title" class="form-control"/>
 
-      <div *ngIf="post.image">
-        <img src="{{ url + 'post/image/' + post.image }}" class="avatar_edit">
+                <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+                  El titulo no es válido
+                </small>
+              </div>-->
+
+              <div class="form-group">
+                <label for="content">Contenido</label>
+                <textarea [froalaEditor]="froala_options" name="content" #content="ngModel" [(ngModel)]="post.content" required></textarea>
+
+                <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+                  El contenido no es válido
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="image">Imagen</label>
+
+                <div *ngIf="post.image">
+                  <img src="{{ url + 'post/image/' + post.image }}" class="avatar_edit">
+                </div>
+
+                <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="imageUpload($event)"></angular-file-uploader>
+              </div>
+
+              <input type="submit" value="Guardar" class="btn btn-success" [disabled]="postNew.invalid"/>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="imageUpload($event)"></angular-file-uploader>
     </div>
 
-    <input type="submit" value="Guardar" class="btn btn-success" [disabled]="postNew.invalid"/>
-  </form>
+    <div class="col-2"></div>
+
+  </div>
+
+
+
+
+
+
+
+
+
   <br>
 </div>

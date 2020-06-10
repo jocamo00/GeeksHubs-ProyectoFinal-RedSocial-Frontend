@@ -8,6 +8,7 @@ import { global } from '../../services/global';
 @Component({
   selector: 'app-post-new',
   templateUrl: './post-new.component.html',
+  styleUrls: ['./post-new.component.scss'],
   providers: [UserService]
 })
 export class PostNewComponent implements OnInit {
@@ -44,7 +45,7 @@ export class PostNewComponent implements OnInit {
     hideProgressBar: false,
     hideResetBtn: true,
     hideSelectBtn: false,
-    attachPinText: 'Sube tu avatar'
+    attachPinText: 'Sube tu imagen'
 
 };
 
