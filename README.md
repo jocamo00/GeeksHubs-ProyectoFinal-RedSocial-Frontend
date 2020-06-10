@@ -25,7 +25,7 @@ Programas y Frameworks utilizados para el desarrollo y pruebas del proyecto:
 
 ### Instalación 🔧
 
-Requiere tener el backend de la aplicación en funcionamiento, aqui podras encontrar el repositorio del backend.
+Requiere tener el backend de la aplicación en funcionamiento, aqui podras encontrar el repositorio del backend.[Wiki](https://github.com/jocamo00/GeeksHubs-ProyectoFinal-RedSocial-Backend.git)
 
 Una vez descargado, descomprimido y ubicado en el directorio del proyecto, instale las dependencias y devDependencies.
 
@@ -143,9 +143,14 @@ const hashPassword = await bcrypt.hash(req.body.password, salt)
 ```
 
 ## Imagenes
-![Screenshot](imgReadme/cabecera.png)
 
-
+![Screenshot](cabecera.png)
+![Screenshot](pagPrincipal.png)
+![Screenshot](registro.png)
+![Screenshot](login.png)
+![Screenshot](nuevaEntrada.png)
+![Screenshot](editarPerfil.png)
+![Screenshot](perfil.png)
 
 
 
