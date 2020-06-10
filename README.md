@@ -143,7 +143,7 @@ const hashPassword = await bcrypt.hash(req.body.password, salt)
 ```
 
 ## Imagenes
-![Screenshot](cabecera.png)
+![Screenshot](imgReadme/cabecera.png)
 
 
 
