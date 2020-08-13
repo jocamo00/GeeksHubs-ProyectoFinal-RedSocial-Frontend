@@ -1,0 +1,95 @@
+<!-- Mientras se cargan los posts -->
+<div class="loading" *ngIf="!posts">
+  Cargando...
+</div>
+
+  <!-- Muestra el contenido cuando la propiedad posts exista, tenga contenido -->
+  <div class="container-fluid margin-top-header" *ngIf="posts">
+
+    <div class="row">
+      <div class="col-12 p-0">
+          <img src="../../../assets/img/backProfile.jpg" class="card-img profile-img-background" alt="...">
+          <div class="row">
+              <img src="{{ url + 'user/avatar/' + identity.image}}" class="card-img mr-3 user-img-background" alt="...">
+              <h5 class="card-title pt-2 user-name-profile">{{ user.name + ' ' + user.surname }}</h5>
+          </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-8 container-posts">
+
+          <h2 class="mt-5 pb-2">Mis publicaciones</h2>
+          <div class="card mb-3 background-post" *ngFor="let post of posts">
+              <div class="row no-gutters ml-auto" *ngIf="identity && identity.sub == post.user_id">
+
+                 <!-- botones de acción -->
+                 <!-- Comprueba si el usuario esta identificado y si el id del usuario identificado
+                      es igual al user_id del post-->
+                  <a [routerLink]="['/editar-entrada', post.id]"><img src="../../../assets/img/editar.png" class="card-img mr-3 user-img post-icons" alt="icono editar"></a>
+
+                  <!-- Button to Open the Modal -->
+                  <button type="button" data-toggle="modal" [attr.data-target]="'#myModal'+post.id" style="border-style: none"><img src="../../../assets/img/eliminar.png" class="card-img mr-3 user-img post-icons" alt="icono eliminar"></button>
+                  <!-- The Modal -->
+                  <div class="modal" id="{{ 'myModal'+post.id }}">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">¿Seguro que quieres borrar esta publicación?</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          La publicación se va a borrar definitivamente
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <a (click)="deletePost(post.id)" class="btn btn-danger" data-dismiss="modal">Borrar</a>
+                          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <img src="{{ url + 'post/image/' + post.image }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text mt-3" [innerHtml]="post.content"></p>
+                <p class="card-text"><small class="text-muted">{{ post.created_at}}</small></p>
+              </div>
+            </div>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+          <div class="card bg-light text-dark margin-top-column-profile">
+              <img src="../../../assets/img/fondoViaje.png" class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h3 class="card-title mt-3">Biografia</h3>
+                <p class="card-text" [innerHtml]="user.description">/p>
+                <div class="row no-gutters mt-5">
+                  <img src="../../../assets/img/email.png" class="card-img mr-3 user-img" alt="..." style="width: 3rem">
+                  <a class="email"><h5 class="card-title pt-2 text-dark">{{ user.email }}</h5></a>
+              </div>
+              </div>
+            </div>
+
+          <h2 class="mt-5">Members</h2>
+          <div class="card mb-3 background-post" *ngFor="let user of users">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <img src="{{ url + 'user/avatar/' + user.image}}" class="card-img mr-3 user-img" alt="..." style="width: 3rem">
+                    <h5 class="card-title pt-2 user-name">{{ user.name + ' ' + user.surname }}</h5>
+                </div>
+            </div>
+        </div>
+      </div>
+
+  </div>
+
+  </div>

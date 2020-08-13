@@ -1,0 +1,73 @@
+<!--<header>-->
+
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/logo.png" width="90" height="90" alt="" loading="lazy"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['inicio']">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-right" *ngIf="!identity">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/login']"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign in</button></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/registro']"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign Up</button></a>
+        </li>
+      </ul>
+
+      <!-- comprueba si identity y identity.name existen y tienen datos,
+           si es asi muestra el desplegable -->
+      <ul class="navbar-nav navbar-right" *ngIf="identity && identity.name">
+
+        <li *ngIf="identity && identity.image" class="nav-item">
+          <div class="avatar_mask">
+            <img src="{{url + 'user/avatar/' + identity.image }}" class="avatar_nav">
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ identity.name + ' ' + identity.surname }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/crear-entrada']"><img src="../assets/img/add.png" class="img-add"> publicación</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]"><img src="../assets/img/profile.png" class="img-add"> Ver perfil</a>
+            <a class="dropdown-item" [routerLink]="['/ajustes']"><img src="../assets/img/editProfile.png" class="img-add"> Editar perfil</a>
+            <a class="dropdown-item" [routerLink]="['/logout/1']"><img src="../assets/img/close.png" class="img-add"> Salir</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--<div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3 title-header">SOCIAL TRAVEL</h1>
+        <p class="lead mb-0 subtitle-header">Travelers Experiences</p>
+      </div>
+    </div>
+  </div>-->
+
+<!--</header>-->
+
+<!--contenido-->
+<router-outlet></router-outlet>
+
+
+

@@ -1,0 +1,69 @@
+<div class="col-md-12" style="margin-top: 9rem;">
+  <!-- Mensajes de alerta -->
+  <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
+    Los datos se han guardado correctamente !!
+  </div>
+
+  <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
+    Los datos no se han guardado!!
+  </div>
+
+
+  <div class="row container-publication mb-4" style="display: flex; justify-content: center; margin-top: 10rem;">
+      <img src="../../../assets/img/registro.png" class="card-img img-register" alt="..." style="width: 2rem; height: 2rem;">
+      <p class="title-register ml-2" style="font-size: calc(1.5em + 1.5vw);"> Publicación</p>
+  </div>
+
+
+  <div class="row">
+    <div class="col-2"></div>
+
+    <div class="card mb-3 col-8">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="../../../assets/img/nuevaEntrada.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <!-- Formulario de crear entrada -->
+            <form class="col-md-12 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
+              <!--<div class="form-group">
+                <label for="title">Titulo</label>
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="post.title" class="form-control"/>
+
+                <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+                  El titulo no es válido
+                </small>
+              </div>-->
+
+              <div class="form-group">
+                <label for="content">Contenido</label>
+                <textarea [froalaEditor]="froala_options" name="content" #content="ngModel" [(ngModel)]="post.content" required></textarea>
+
+                <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+                  El contenido no es válido
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="image">Imagen</label>
+
+                <div *ngIf="post.image">
+                  <img src="{{ url + 'post/image/' + post.image }}" class="avatar_edit">
+                </div>
+
+                <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="imageUpload($event)"></angular-file-uploader>
+              </div>
+
+              <input type="submit" value="Guardar" class="btn btn-success" [disabled]="postNew.invalid"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2"></div>
+
+  </div>
+
+</div>
